@@ -1,0 +1,44 @@
+{
+  "name": "hacker-toes-6",
+  "version": "6.2.1",
+  "private": true,
+  "type": "module",
+  "main": "electron/main.cjs",
+  "productName": "Hacker Toes",
+  "description": "A private multiplayer chat, voice calling and remote soundboard for macOS and Windows.",
+  "engines": {
+    "node": ">=22.12"
+  },
+  "scripts": {
+    "start": "node server.js",
+    "stop": "node stop.js",
+    "internet": "node internet-server.js",
+    "dev": "vite --host 127.0.0.1",
+    "build": "vite build",
+    "desktop": "npm run build && electron .",
+    "desktop:dev": "npm run build && electron .",
+    "dist:win": "npm run build && electron-builder --config electron-builder.config.cjs --win nsis --publish never",
+    "dist:mac": "npm run build && electron-builder --config electron-builder.config.cjs --mac dmg zip --publish never",
+    "release:win": "npm run build && electron-builder --config electron-builder.config.cjs --win nsis --publish always",
+    "release:mac": "npm run build && electron-builder --config electron-builder.config.cjs --mac dmg zip --publish always",
+    "test": "node --test test/*.test.js",
+    "check": "node --check server.js && node --check internet-server.js && node --check access.js && node --check electron/main.cjs && node --check electron/preload.cjs && node --check electron-builder.config.cjs && vite build",
+    "verify": "npm test && npm run check"
+  },
+  "dependencies": {
+    "electron-updater": "6.8.12",
+    "express": "^5.1.0",
+    "socket.io": "^4.8.1",
+    "socket.io-client": "^4.8.1",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1",
+    "lucide-react": "^0.468.0",
+    "multer": "^2.0.2",
+    "qrcode": "^1.5.4"
+  },
+  "devDependencies": {
+    "electron": "45.3.4",
+    "electron-builder": "26.18.1",
+    "vite": "^6.4.1"
+  }
+}

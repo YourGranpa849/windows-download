@@ -1,0 +1,5 @@
+{
+  "mode": "named",
+  "publicUrl": "https://chat.hackertoes.bid",
+  "tokenFile": "data/cloudflare-token.txt"
+}
